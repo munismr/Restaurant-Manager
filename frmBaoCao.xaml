@@ -1,0 +1,87 @@
+﻿<Window x:Class="RestaurantManager.frmBaoCao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantManager"
+        Background="DodgerBlue"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="frmBaoCao" Height="450" Width="800">
+    <Grid Margin="2,20,2,2" Background="LightBlue">
+        <TabControl>
+            <TabItem Header="Doanh thu" FontSize="12" >
+                <Grid Background="blanchedalmond" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Doanh thu ngày" Margin="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="25"/>
+                        <DatePicker x:Name="datedoanhthu" Grid.Column="1" Margin="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="25" SelectedDateChanged="datedoanhthu_SelectedDateChanged" ></DatePicker>
+
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="15">
+                        <DataGrid Name="datagirdoanhthu" Background="LightGray" Margin="0,5,5,5" IsReadOnly="True" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Số hóa đơn" Binding="{Binding Mahoadon}"/>
+                                <DataGridTextColumn Header="Mã nhân viên" Binding="{Binding Manhanvien}"/>
+                                <DataGridTextColumn Header="Tên nhân viên" Binding="{Binding Tennhanvien}"/>
+                                <DataGridTextColumn Header="Tổng tiền" Binding="{Binding Tongtien}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Label Content="Tổng tiền"  Margin="545,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="25"/>
+                        <TextBox Name="txttongdt" HorizontalAlignment="Left" Margin="626,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100" Height="26" />
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Nguyên liệu tồn" FontSize="12" Visibility="Collapsed">
+                <Grid Background="blanchedalmond" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="129*"/>
+                            <ColumnDefinition Width="154*"/>
+                            <ColumnDefinition Width="462*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Nguyên liệu tồn ngày:" Margin="15,15,15,15" Grid.ColumnSpan="2"/>
+                        <DatePicker Name="datenlt" Grid.Column="2" Margin="15,15,15,15" SelectedDateChanged="datenlt_SelectedDateChanged"></DatePicker>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="15">
+                        <DataGrid Name="datagirdnlt" Background="LightGray" Margin="0,5,5,5" IsReadOnly="True" >
+                            <DataGrid.Columns>
+                                
+                                <DataGridTextColumn Header="Tên nguyên liệu" Binding="{Binding Tennguyenlieu}"/>
+                                <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Donvitinh}"/>
+                                <DataGridTextColumn Header="Số lượng tồn" Binding="{Binding Soluong}"/>
+                                <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
+                                <DataGridTextColumn Header="Thành tiền" Binding="{Binding Thanhtien}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Label Content="Tổng tiền" HorizontalAlignment="Left" Margin="545,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox Name="txttongtiennlt" HorizontalAlignment="Left" Margin="626,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="124" Height="26" />
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

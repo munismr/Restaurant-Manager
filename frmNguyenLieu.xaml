@@ -1,0 +1,302 @@
+﻿<Window x:Class="RestaurantManager.frmNguyenLieu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantManager"
+        Background="DodgerBlue"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="frmNguyenLieu" Height="450" Width="800">
+    <Grid Margin="2,20,2,2">
+        <TabControl Background="LightBlue">
+            <TabItem Header="Nguyên liệu" FontSize="12"  >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Background="Beige" Grid.Column="0" Margin="10" Header="Nhóm nguyên liệu" FontSize="14">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Name="datagirdnhomnl" Loaded="datagirdnhomnl_Loaded" IsReadOnly="True" SelectionChanged="datagirdnhomnl_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mã " Binding="{Binding Manhomnguyenlieu}" Visibility="Collapsed" />
+                                    <DataGridTextColumn Header="Tên nhóm" Binding="{Binding Tennhomnguyenlieu}"/>
+                                    
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Grid.Row="1">
+                                <Label Content="Tên nhóm" Margin="10,0,10,39"></Label>
+                                <TextBox Name="txttennnl" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120"  Height="30"/>
+                                <Button Name="btthemnnl"  Content="Thêm" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="50" Click="btthemnnl_Click"/>
+                                <Button Name="btsuannl"  Content="Sửa" HorizontalAlignment="Left" Margin="73,74,0,0" VerticalAlignment="Top" Width="50" Click="btsuannl_Click"/>
+
+
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Background="Beige" Grid.Column="1" Margin="10" Header="Nguyên liệu" FontSize="14">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Name="datagirdnl" Loaded="datagirdnl_Loaded" SelectionChanged="datagirdnl_SelectionChanged" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mã nguyên liệu" Binding="{Binding Manguyenlieu}" />
+                                    <DataGridTextColumn Header="Tên nguyên liệu" Binding="{Binding Tennguyenlieu}"/>
+                                    <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
+                                    <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Donvitinh}"/>
+                                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Soluong}"/>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Grid.Row="1">
+                                <Grid Grid.Row="1">
+
+                                    <Label Content="Tên " HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Nhóm" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top"/>
+
+                                    <Label Content="Đơn vị tính" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Số lượng" HorizontalAlignment="Left" Margin="200,60,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Đơn giá" HorizontalAlignment="Left" Margin="380,10,0,0" VerticalAlignment="Top"/>
+                                    <TextBox Name="txttennl" HorizontalAlignment="Left" Margin="70,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Height="25"/>
+                                    <ComboBox Name="cbnhom" HorizontalAlignment="Left" Margin="70,60,0,0"  Text="TextBox" VerticalAlignment="Top" Width="100" Height="25" Loaded="cbnhom_Loaded"/>
+                                    <TextBox Name="txtdvt" HorizontalAlignment="Left" Margin="280,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Height="25"/>
+                                    <TextBox Name="txtsoluong" HorizontalAlignment="Left" Margin="280,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Height="25"/>
+                                    <TextBox Name="txtdongia" HorizontalAlignment="Left" Margin="450,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Height="25"/>
+                                    <Button Name="btthemnl"  Content="Thêm" HorizontalAlignment="Left" Margin="70,120,0,0" VerticalAlignment="Top" Width="50" Click="btthemnl_Click"/>
+                                    <Button Name="btsuanl"  Content="Sửa" HorizontalAlignment="Left" Margin="150,120,0,0" VerticalAlignment="Top" Width="50" Click="btsuanl_Click"/>
+                                    
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Món ăn" FontSize="12" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Background="Beige" Grid.Column="0" Margin="10" Header="Nhóm món an" FontSize="14">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Name="datagirdnhomma"  IsReadOnly="True" Loaded="datagirdnhomma_Loaded" SelectionChanged="datagirdnhomma_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mã " Binding="{Binding Manhommonan}" Visibility="Collapsed" />
+                                    <DataGridTextColumn Header="Tên nhóm" Binding="{Binding Tennhommonan}"/>
+                                    <DataGridTemplateColumn >
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Name="btxoanma" Content="Xóa" Click="btxoanma_Click"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Grid.Row="1">
+                                <Label Content="Tên nhóm" Margin="10,0,10,39"></Label>
+                                <TextBox Name="txttennma" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120"  Height="30"/>
+                                <Button Name="btthemnma"  Content="Thêm" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="50" Click="btthemnma_Click" />
+                                <Button Name="btsuanma"  Content="Sửa" HorizontalAlignment="Left" Margin="73,74,0,0" VerticalAlignment="Top" Width="50" Click="btsuanma_Click"/>
+
+
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Background="Beige" Grid.Column="1" Margin="10" Header="Món ăn" FontSize="14">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Name="datagirdma" SelectionChanged="datagirdma_SelectionChanged" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mã món ăn" Binding="{Binding Mamonan}" />
+                                    <DataGridTextColumn Header="Tên món ăn" Binding="{Binding Tenmonan}"/>
+                                    <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
+                                    <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Donvitinh}"/>
+
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Grid.Row="1">
+                                <Grid Grid.Row="1">
+
+                                    <Label Content="Tên " HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Nhóm" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top"/>
+
+                                    <Label Content="Đơn vị tính" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Đơn giá" HorizontalAlignment="Left" Margin="200,60,0,0" VerticalAlignment="Top"/>
+
+                                    <TextBox Name="txttenma" HorizontalAlignment="Left" Margin="70,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Height="25"/>
+                                    <ComboBox Name="cbnhomma" HorizontalAlignment="Left" Margin="70,60,0,0"  Text="TextBox" VerticalAlignment="Top" Width="100" Height="25" Loaded="cbnhomma_Loaded" />
+                                    <TextBox Name="txtdvtma"  HorizontalAlignment="Left" Margin="280,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Height="25"/>
+                                    <TextBox Name="txtgiama"  HorizontalAlignment="Left" Margin="280,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Height="25"/>
+
+                                    <Button Name="btthemma" Content="Thêm" HorizontalAlignment="Left" Margin="70,120,0,0" VerticalAlignment="Top" Width="50" Click="btthemma_Click"/>
+                                    <Button Name="btsuama"  Content="Sửa" HorizontalAlignment="Left" Margin="150,120,0,0" VerticalAlignment="Top" Width="50" Click="btsuama_Click"/>
+                                    <Button Name="btxoama" Content="xóa" HorizontalAlignment="Left" Margin="230,120,0,0" VerticalAlignment="Top" Width="50" Click="btxoama_Click"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Định lượng" FontSize="12"  >
+                <Grid Margin="15" Background="Beige">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0"  >
+                        <Label Content="Danh sách nguyên liệu" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <DataGrid IsReadOnly="True" Name="datagirdnguyenlieudl" Margin="5" Background="gainsboro" Loaded="datagirdnguyenlieudl_Loaded">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mã nguyên liệu" Binding="{Binding Manguyenlieu}"/>
+                                    <DataGridTextColumn Header="Tên nguyên liệu" Binding="{Binding Tennguyenlieu}"/>
+                                    <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Donvitinh}"/>
+                                    <DataGridTemplateColumn >
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Name="btthemnldl" Content="Thêm" Click="btthemnldl_Click" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        <GroupBox Header="Định lượng món ăn" Grid.Column="1">
+                            <Grid Grid.Column="1" Background="lightgoldenrodyellow">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="5*"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Column="0" Grid.Row="1" Content="Tên món ăn:" Margin="5"></Label>
+                                    <ComboBox Name="cbmonandl"  Grid.Column="1" Grid.Row="1" Margin="0,5,5,25" Loaded="cbmonandl_Loaded" SelectionChanged="cbmonandl_SelectionChanged"></ComboBox>
+
+
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <DataGrid Name="datagirldl" Background="gainsboro" Margin="5" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Mã nguyên liệu" Binding="{Binding Manguyenlieu}"/>
+                                            <DataGridTextColumn Header="Tên nguyên liệu" Binding="{Binding Tennguyenlieu}"/>
+                                            <DataGridTextColumn Header="Số lượng" Binding="{Binding Soluong}"/>
+                                            <DataGridTemplateColumn >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Name="btxoanldl" Content="Xóa" Click="btxoanldl_Click"  />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+
+                                </Grid>
+                            </Grid>
+                        </GroupBox>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Nhà cung cấp" FontSize="12" >
+                <Grid Margin="20" Background="lightgoldenrodyellow">
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label  Content="Tên nhà cung cấp:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                        <Label  Content="Địa chỉ:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" />
+                        <Label  Content="Điện thoại:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,90,0,0"/>
+                        <Label  Content="Email:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                        <TextBox Name="txttenncc" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,10,410,50" Width="200" Height="25"></TextBox>
+                        <TextBox Name="txtdcncc" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,50,410,10" Width="200" Height="25"></TextBox>
+                        <TextBox Name="txtdtncc" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,90,410,10" Width="200" Height="25"></TextBox>
+                        <TextBox Name="txtemailncc" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,130,410,10" Width="200" Height="25"></TextBox>
+                        <Button Name="btthemncc"  Content="Thêm" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="400,130,0,0" Width="100" Height="30" Background="aquamarine" Click="btthemncc_Click"></Button>
+                        <Button Name="btsuancc"  Content="Sửa" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="540,130,0,0" Width="100" Height="30" Background="aquamarine" Click="btsuancc_Click"></Button>
+                        
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <DataGrid Name="datagirdncc" Background="LightCyan" Loaded="datagirdncc_Loaded" SelectionChanged="datagirdncc_SelectionChanged" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Mã nhà cung cấp" Binding="{Binding Mancc}"/>
+                                <DataGridTextColumn Header="Tên nhà cung cấp" Binding="{Binding Tenncc}"/>
+                                <DataGridTextColumn Header="Địa chỉ" Binding="{Binding Diachi}"/>
+                                <DataGridTextColumn Header="Điện thoại" Binding="{Binding Tenncc}"/>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Diachi}"/>
+                                
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Khách hàng" FontSize="12" >
+                <Grid Margin="20" Background="lightgoldenrodyellow">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label  Content="Tên khách hàng:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                        <Label  Content="Địa chỉ:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" />
+                        <Label  Content="Điện thoại:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,90,0,0"/>
+                        <Label  Content="Email:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                        <TextBox Name="txttenkh" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,10,410,50" Width="200" Height="25"></TextBox>
+                        <TextBox Name="txtdckh" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,50,410,10" Width="200" Height="25"></TextBox>
+                        <TextBox Name="txtdtkh" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,90,410,10" Width="200" Height="25"></TextBox>
+                        <TextBox Name="txtemailkh" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,130,410,10" Width="200" Height="25"></TextBox>
+                        <Button Name="btthemkh"  Content="Thêm" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="400,130,0,0" Width="50" Height="25" Background="aquamarine" Click="btthemkh_Click" ></Button>
+                        <Button Name="btsuakh"  Content="Sửa" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="500,130,0,0" Width="50" Height="25" Background="aquamarine" Click="btsuakh_Click"></Button>
+                        
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <DataGrid Name="datagirdkhachhang"  Background="LightGray" Loaded="datagirdkhachhang_Loaded" SelectionChanged="datagirdkhachhang_SelectionChanged" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Mã khách hàng" Binding="{Binding Makh}"/>
+                                <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding Tenkh}"/>
+                                <DataGridTextColumn Header="Địa chỉ" Binding="{Binding Diachi}"/>
+                                <DataGridTextColumn Header="Điện thoại" Binding="{Binding Dienthoai}"/>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
